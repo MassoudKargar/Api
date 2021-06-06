@@ -2,8 +2,9 @@
 {
     public class OrderItem
     {
-        public OrderItem(int orderId, int productId, decimal price)
+        public OrderItem(int id,int orderId, int productId, decimal price)
         {
+            Id = id;
             OrderId = orderId;
             ProductId = productId;
             Price = price;

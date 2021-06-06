@@ -35,7 +35,7 @@ namespace Api.Domain.Models.Orders
         public void AddItem(List<OrderItemCommand> cmdOrderItems)
         {
             foreach (var item in cmdOrderItems)
-                _orderItems.Add(new OrderItem(Id,item.ProductId,item.Price));
+                _orderItems.Add(new OrderItem(0,Id,item.ProductId,item.Price));
 
             AddDomainEvent(new OederAddedEvent(UserId));
         }

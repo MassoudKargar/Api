@@ -16,6 +16,12 @@ namespace Api.Web.Controllers
 
         private IMediator Mediator { get; }
 
+
+        /// <summary>
+        /// Add Order
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPost, Route(template: "[action]")]
         public async Task<IActionResult> AddOrderAsync(AddOrderCommand command)
         {
