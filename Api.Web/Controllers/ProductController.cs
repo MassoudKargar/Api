@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Api.Domain.Commands;
+using Api.Domain.Commands.Products;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

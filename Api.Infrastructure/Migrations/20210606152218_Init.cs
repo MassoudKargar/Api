@@ -8,12 +8,50 @@ namespace Api.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AppUsers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FiestName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: true),
+                    PhotoFileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BirthDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    PurchasedNumber = table.Column<int>(type: "int", nullable: false),
+                    LastVisitDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    Location = table.Column<bool>(type: "bit", nullable: false),
+                    Ip = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LoginCount = table.Column<int>(type: "int", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,8 +115,7 @@ namespace Api.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -157,6 +194,11 @@ namespace Api.Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "AppUsers",
+                columns: new[] { "Id", "AccessFailedCount", "BirthDate", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FiestName", "Ip", "IsActive", "LastName", "LastVisitDate", "Location", "LockoutEnabled", "LockoutEnd", "LoginCount", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PhotoFileName", "PurchasedNumber", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { 1, 0, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "257e6b0a-7d99-447b-89b1-405762c5365e", new DateTime(2021, 6, 6, 9, 22, 17, 700, DateTimeKind.Local).AddTicks(3291), "info@api.com", true, null, null, true, null, new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), false, false, null, 0, null, null, null, "09213641310", true, null, 0, null, false, null });
+
+            migrationBuilder.InsertData(
                 table: "ProductCategories",
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[,]
@@ -166,6 +208,15 @@ namespace Api.Infrastructure.Migrations
                     { 3, "Description 3", "Catrgory 3" },
                     { 4, "Description 4", "Catrgory 4" },
                     { 5, "Description 5", "Catrgory 5" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "Body", "CreatedAt", "FilePhat", "ImgPath", "IsDeleted", "IsSalleble", "IsVisible", "Price", "ProductCategoryId", "Title" },
+                values: new object[,]
+                {
+                    { 1, "body", new DateTime(2021, 6, 6, 9, 22, 17, 713, DateTimeKind.Local).AddTicks(7871), "filePath", "imgPath", false, false, true, 10000m, (short)1, "title" },
+                    { 2, "body_2", new DateTime(2021, 6, 6, 9, 22, 17, 714, DateTimeKind.Local).AddTicks(3144), "filePath_2", "imgPath_2", false, false, true, 10000m, (short)2, "title_2" }
                 });
 
             migrationBuilder.InsertData(
@@ -203,6 +254,9 @@ namespace Api.Infrastructure.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AppUsers");
+
             migrationBuilder.DropTable(
                 name: "Comments");
 

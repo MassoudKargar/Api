@@ -1,11 +1,12 @@
-﻿using Api.Domain.CommandResult;
+﻿using Api.Domain.CommandResult.Products;
 using MediatR;
 
-namespace Api.Domain.Commands
+namespace Api.Domain.Commands.Products
 {
-    public class AddProductCommand : IRequest<AddProductResult>
+    public class UpdateProductCommand : IRequest<UpdateProductResult>
     {
-        public string Title { get; set; } 
+        public int Id { get; set; }
+        public string Title { get; set; }
         public string Body { get; set; }
         public decimal Price { get; set; }
         public string ImgPath { get; set; }
