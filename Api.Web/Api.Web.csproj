@@ -8,6 +8,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="MediatR" Version="9.0.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.6" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.6">
@@ -28,7 +30,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Api.Application\Api.Application.csproj" />
 		<ProjectReference Include="..\Api.Infrastructure\Api.Infrastructure.csproj" />
-		<ProjectReference Include="..\Api.Services\Api.Services.csproj" />
 	</ItemGroup>
 
 </Project>

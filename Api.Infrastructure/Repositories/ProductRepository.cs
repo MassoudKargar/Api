@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Api.Domain.Contracts.Repositories;
 using Api.Domain.Models.Products;
 using Api.Infrastructure.SqlContext;
-using Api.Interface;
 
 namespace Api.Infrastructure.Repositories
 {
@@ -23,6 +23,12 @@ namespace Api.Infrastructure.Repositories
         async Task<Product> IProductRepository.FindAsync(int id)
         {
             return await _db.Products.FindAsync(id);
+        }
+
+        async Task IProductRepository.Save(Product product)
+        {
+            _db.Update(product);
+            await _db.SaveChangesAsync();
         }
     }
 }

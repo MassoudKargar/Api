@@ -2,17 +2,16 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 8080:80
+EXPOSE 44343:443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["Api.Web/Api.Web.csproj", "Api.Web/"]
-COPY ["Api.Application/Api.Application.csproj", "Api.Application/"]
 COPY ["Api.Services/Api.Services.csproj", "Api.Services/"]
 COPY ["Api.Infrastructure/Api.Infrastructure.csproj", "Api.Infrastructure/"]
-COPY ["Api.Interface/Api.Interface.csproj", "Api.Interface/"]
 COPY ["Api.Domain/Api.Domain.csproj", "Api.Domain/"]
+COPY ["Shop.ErrorMessage/Api.ErrorMessage.csproj", "Shop.ErrorMessage/"]
 RUN dotnet restore "Api.Web/Api.Web.csproj"
 COPY . .
 WORKDIR "/src/Api.Web"

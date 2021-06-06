@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using Api.Application.ViewModel;
-using Api.Interface;
+﻿using System.Threading.Tasks;
+using Api.Domain.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Web.Controllers
@@ -11,17 +10,24 @@ namespace Api.Web.Controllers
 
     public class ProductController : ControllerBase
     {
-        public ProductController(IProductService productService)
+        public ProductController(IMediator mediator)
         {
-            ProductService = productService;
+            Mediator = mediator;
         }
 
-        private IProductService ProductService { get; }
+        private IMediator Mediator { get; }
 
         [HttpPost, Route(template: "[action]")]
-        public async Task<IActionResult> AddProductAsync(AddProductViewModel model)
+        public async Task<IActionResult> AddProductAsync(AddProductCommand command)
         {
-            var v = await ProductService.AddProduct(model);
+            var v = await Mediator.Send(command);
+            return Ok(v);
+        }
+
+        [HttpPost, Route(template: "[action]")]
+        public async Task<IActionResult> UpdateProductAsync(UpdateProductCommand command)
+        {
+            var v = await Mediator.Send(command);
             return Ok(v);
         }
     }

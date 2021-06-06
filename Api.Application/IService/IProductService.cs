@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Api.Application.ViewModel;
 
-namespace Api.Interface
+namespace Api.Application.IService
 {
     public interface IProductService
     {

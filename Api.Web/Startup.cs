@@ -1,5 +1,4 @@
-﻿using Api.Services.Utiliry;
-
+﻿using Api.Application.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,12 +17,13 @@ namespace Api.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.PerformDbContextRegistration();
+            services.RegisterServices();
+            services.RegisterMediator();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddControllers();
-            services.ServiceCollection();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api.Web", Version = "v1" });
@@ -39,17 +39,15 @@ namespace Api.Web
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api.Web v1"));
             }
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
         }
+
+
     }
 }

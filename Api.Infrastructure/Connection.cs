@@ -1,4 +1,4 @@
-﻿namespace Api.Services
+﻿namespace Api.Infrastructure
 {
     public static class Connection
     {

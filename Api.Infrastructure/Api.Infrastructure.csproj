@@ -19,7 +19,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Api.Domain\Api.Domain.csproj" />
-		<ProjectReference Include="..\Api.Interface\Api.Interface.csproj" />
 	</ItemGroup>
 
 </Project>

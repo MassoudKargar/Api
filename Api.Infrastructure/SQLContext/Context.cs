@@ -3,7 +3,7 @@ using Api.Domain.Models.Orders;
 using Api.Domain.Models.Products;
 using Api.Domain.Models.Tags;
 using Api.Infrastructure.Fluent;
-using Api.Services;
+using Api.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 

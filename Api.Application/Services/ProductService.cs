@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Api.Application.IService;
 using Api.Application.ViewModel;
+using Api.Domain.Contracts.Repositories;
 using Api.Domain.Models.Products;
-using Api.Interface;
 
-namespace Api.Services
+namespace Api.Application.Services
 {
     public class ProductService : IProductService
     {

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Api.Domain.Commands;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using System;
@@ -23,17 +24,31 @@ namespace Api.Domain.Models.Products
             bool isSalleble) : this()
         {
             Id = id;
-            Title = title ?? throw new ArgumentNullException(nameof(title));
-            Body = body ?? throw new ArgumentNullException(nameof(body));
+            Title = title;
+            Body = body;
             CreatedAt = createdAt;
             Price = price;
-            ImgPath = imgPath ?? throw new ArgumentNullException(nameof(imgPath));
-            FilePhat = filePhat ?? throw new ArgumentNullException(nameof(filePhat));
+            ImgPath = imgPath;
+            FilePhat = filePhat;
             ProductCategoryId = productCategoryId;
             IsVisible = isVisible;
             IsDeleted = isDeleted;
             IsSalleble = isSalleble;
         }
+
+        public void Update(UpdateProductCommand cmd)
+        { 
+            Title = cmd.Title;
+            Body = cmd.Body;
+            Price = cmd.Price;
+            ImgPath =cmd.ImgPath;
+            FilePhat = cmd.FilePhat;
+            ProductCategoryId = cmd.ProductCategoryId;
+            IsVisible = cmd.IsVisible;
+            IsDeleted = cmd.IsDeleted;
+            IsSalleble = cmd.IsSalleble;
+        }
+
         public Product()
         {
             _comments = new List<Comment>();
