@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Api.Domain.CommandResult;
-using Api.Domain.Commands;
+using Api.Domain.CommandResult.Products;
+using Api.Domain.Commands.Products;
 using Api.Domain.Contracts.Repositories;
 using Api.Domain.Models.Products;
 using MediatR;

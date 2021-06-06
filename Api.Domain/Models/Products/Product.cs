@@ -1,14 +1,10 @@
-﻿using Api.Domain.Commands;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using Api.Domain.Commands.Products;
 
 namespace Api.Domain.Models.Products
 {
-    public class Product 
+    public class Product
     {
         public Product(
             int id,
@@ -37,11 +33,11 @@ namespace Api.Domain.Models.Products
         }
 
         public void Update(UpdateProductCommand cmd)
-        { 
+        {
             Title = cmd.Title;
             Body = cmd.Body;
             Price = cmd.Price;
-            ImgPath =cmd.ImgPath;
+            ImgPath = cmd.ImgPath;
             FilePhat = cmd.FilePhat;
             ProductCategoryId = cmd.ProductCategoryId;
             IsVisible = cmd.IsVisible;

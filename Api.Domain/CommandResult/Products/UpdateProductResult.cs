@@ -1,4 +1,4 @@
-﻿namespace Api.Domain.CommandResult
+﻿namespace Api.Domain.CommandResult.Products
 {
     public class UpdateProductResult
     {

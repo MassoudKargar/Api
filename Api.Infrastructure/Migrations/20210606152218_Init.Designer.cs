@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210605111830_Init")]
+    [Migration("20210606152218_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,9 @@ namespace Api.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -42,9 +45,6 @@ namespace Api.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -136,6 +136,36 @@ namespace Api.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Body = "body",
+                            CreatedAt = new DateTime(2021, 6, 6, 9, 22, 17, 713, DateTimeKind.Local).AddTicks(7871),
+                            FilePhat = "filePath",
+                            ImgPath = "imgPath",
+                            IsDeleted = false,
+                            IsSalleble = false,
+                            IsVisible = true,
+                            Price = 10000m,
+                            ProductCategoryId = (short)1,
+                            Title = "title"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Body = "body_2",
+                            CreatedAt = new DateTime(2021, 6, 6, 9, 22, 17, 714, DateTimeKind.Local).AddTicks(3144),
+                            FilePhat = "filePath_2",
+                            ImgPath = "imgPath_2",
+                            IsDeleted = false,
+                            IsSalleble = false,
+                            IsVisible = true,
+                            Price = 10000m,
+                            ProductCategoryId = (short)2,
+                            Title = "title_2"
+                        });
                 });
 
             modelBuilder.Entity("Api.Domain.Models.Products.ProductCategory", b =>
@@ -270,6 +300,116 @@ namespace Api.Infrastructure.Migrations
                         {
                             Id = 5,
                             Name = "Tag 5"
+                        });
+                });
+
+            modelBuilder.Entity("Api.Domain.Models.Users.AppUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("BirthDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FiestName")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<string>("Ip")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<DateTimeOffset>("LastVisitDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("Location")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("LoginCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PhotoFileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PurchasedNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            ConcurrencyStamp = "257e6b0a-7d99-447b-89b1-405762c5365e",
+                            CreatedAt = new DateTime(2021, 6, 6, 9, 22, 17, 700, DateTimeKind.Local).AddTicks(3291),
+                            Email = "info@api.com",
+                            EmailConfirmed = true,
+                            IsActive = true,
+                            LastVisitDate = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Location = false,
+                            LockoutEnabled = false,
+                            LoginCount = 0,
+                            PhoneNumber = "09213641310",
+                            PhoneNumberConfirmed = true,
+                            PurchasedNumber = 0,
+                            TwoFactorEnabled = false
                         });
                 });
 

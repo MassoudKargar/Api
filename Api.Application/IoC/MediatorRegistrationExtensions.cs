@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MediatR;
 using System.Reflection;
-using Api.Domain.Commands;
+using Api.Domain.Commands.Products;
 using Api.Application.Handlers.ProductHandlers;
 
 namespace Api.Application.IoC

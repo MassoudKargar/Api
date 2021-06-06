@@ -17,14 +17,17 @@ namespace Api.Domain.Models.Users
         public string LastName { get; set; }
         public string PhotoFileName { get; set; }
         public DateTimeOffset BirthDate { get; set; }
-        public DateTimeOffset CreateDate { get; set; }
+        public int PurchasedNumber { get; set; }
         public DateTimeOffset LastVisitDate { get; set; }
         public bool Location { get; set; }
         public string Ip { get; set; }
         public bool IsActive { get; set; }
-
         public DateTime CreatedAt { get; set; }
         public int LoginCount { get; set; }
 
+        public void UpdatePurchasedNumder()
+        {
+            PurchasedNumber += 1;
+        }
     }
 }
