@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Api.Domain.Commands.Products;
+using Api.Domain.Exceptions;
 
 namespace Api.Domain.Models.Products
 {
@@ -32,8 +33,17 @@ namespace Api.Domain.Models.Products
             IsSalleble = isSalleble;
         }
 
+
         public void Update(UpdateProductCommand cmd)
         {
+            var increase = cmd.Price - Price;
+            var percentege = increase / Price * 100;
+
+            if (percentege > 10)
+            {
+                throw new UpdatePriceCannotBeMoreThenTenPercentException($"Old Value is {Price} and new value is {cmd.Price}");
+            }
+
             Title = cmd.Title;
             Body = cmd.Body;
             Price = cmd.Price;
@@ -45,6 +55,14 @@ namespace Api.Domain.Models.Products
             IsSalleble = cmd.IsSalleble;
         }
 
+        public void Deleted()
+        {
+            if (IsVisible)
+            {
+                throw new VisibelProductCannotbeDeletedExcrption($"Visible Product cannot be deletedId Is {Id} ");
+            }
+            IsDeleted = true;
+        }
         public Product()
         {
             _comments = new List<Comment>();

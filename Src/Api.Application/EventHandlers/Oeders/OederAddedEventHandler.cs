@@ -20,7 +20,7 @@ namespace Api.Application.EventHandlers.Oeders
         {
             var appUser = await UserRepository.Get(notification.UserId);
             appUser.UpdatePurchasedNumder();
-            await UserRepository.Save(appUser);
+            UserRepository.Save(appUser);
         }
     }
 }

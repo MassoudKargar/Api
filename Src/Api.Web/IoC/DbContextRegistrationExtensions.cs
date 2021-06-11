@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Api.Application.IoC
+namespace Api.Web.IoC
 {
     public static class StartupExtensions
     {

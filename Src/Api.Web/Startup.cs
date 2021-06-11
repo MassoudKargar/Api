@@ -1,10 +1,11 @@
 ﻿using Api.Application.IoC;
+using Api.FileService.IoC;
+using Api.Web.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace Api.Web
 {
@@ -20,14 +21,13 @@ namespace Api.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.PerformDbContextRegistration();
+            services.RegisterApplicationServices();
+            services.RegisterFileServiceServices();
             services.RegisterServices();
+            services.RegisterSwaggerServices();
             services.RegisterMediator();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api.Web", Version = "v1" });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,9 +36,8 @@ namespace Api.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api.Web v1"));
             }
+            app.UseSwaggerMiddleeare();
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
