@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Api.Domain.Commands.Products;
+using Api.Domain.Exceptions;
 
 namespace Api.Domain.Models.Products
 {
@@ -32,6 +33,7 @@ namespace Api.Domain.Models.Products
             IsSalleble = isSalleble;
         }
 
+
         public void Update(UpdateProductCommand cmd)
         {
             Title = cmd.Title;
@@ -45,6 +47,14 @@ namespace Api.Domain.Models.Products
             IsSalleble = cmd.IsSalleble;
         }
 
+        public void Deleted()
+        {
+            if (IsVisible)
+            {
+                throw new VisibelProductCannotbeDeletedExcrption($"Visible Product cannot be deletedId Is {Id} ");
+            }
+            IsDeleted = true;
+        }
         public Product()
         {
             _comments = new List<Comment>();

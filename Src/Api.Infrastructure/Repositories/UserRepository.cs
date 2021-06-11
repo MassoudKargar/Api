@@ -18,7 +18,7 @@ namespace Api.Infrastructure.Repositories
             return await Context.AppUsers.FindAsync(userId);
         }
 
-        async Task IUserRepository.Save(AppUser appUser)
+        void IUserRepository.Save(AppUser appUser)
         {
             Context.AppUsers.Update(appUser);
         }

@@ -21,6 +21,7 @@ namespace Api.Web.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            _logger.LogInformation("User is open Api"); 
             var vs = _context.Tags.ToList();
             return Ok(vs);
         }

@@ -4,7 +4,7 @@ using System.Reflection;
 using Api.Domain.Commands.Products;
 using Api.Application.Handlers.ProductHandlers;
 
-namespace Api.Application.IoC
+namespace Api.Web.IoC
 {
     public static class MediatorRegistrationExtensions
     {
