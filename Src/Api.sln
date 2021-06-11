@@ -24,9 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E175ACE4-A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Domain.UnitTest", "Api.Domain.UnitTest\Api.Domain.UnitTest.csproj", "{57FE8340-B3EC-4DC1-801D-B60A667E2E87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Core.Common", "Api.Core.Common\Api.Core.Common.csproj", "{0EA7AA25-68C2-4974-9BBB-45298EDF2609}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Core.Common", "Api.Core.Common\Api.Core.Common.csproj", "{0EA7AA25-68C2-4974-9BBB-45298EDF2609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.FileService", "Api.FileService\Api.FileService.csproj", "{1BF9842A-08D1-458B-8538-5BA2DDFA432B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.FileService", "Api.FileService\Api.FileService.csproj", "{1BF9842A-08D1-458B-8538-5BA2DDFA432B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Application.UnitTests", "Api.Application.UnitTests\Api.Application.UnitTests.csproj", "{D1E36F1C-461B-4E27-986D-DE7C7A9E59F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,12 +68,17 @@ Global
 		{1BF9842A-08D1-458B-8538-5BA2DDFA432B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BF9842A-08D1-458B-8538-5BA2DDFA432B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BF9842A-08D1-458B-8538-5BA2DDFA432B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E36F1C-461B-4E27-986D-DE7C7A9E59F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E36F1C-461B-4E27-986D-DE7C7A9E59F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E36F1C-461B-4E27-986D-DE7C7A9E59F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E36F1C-461B-4E27-986D-DE7C7A9E59F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{57FE8340-B3EC-4DC1-801D-B60A667E2E87} = {E175ACE4-A00C-463D-A16A-F9512EBE13FE}
+		{D1E36F1C-461B-4E27-986D-DE7C7A9E59F1} = {E175ACE4-A00C-463D-A16A-F9512EBE13FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {942562FB-4B59-4FCE-818F-E164DD10B475}

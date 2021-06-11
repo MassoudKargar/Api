@@ -36,6 +36,14 @@ namespace Api.Domain.Models.Products
 
         public void Update(UpdateProductCommand cmd)
         {
+            var increase = cmd.Price - Price;
+            var percentege = increase / Price * 100;
+
+            if (percentege > 10)
+            {
+                throw new UpdatePriceCannotBeMoreThenTenPercentException($"Old Value is {Price} and new value is {cmd.Price}");
+            }
+
             Title = cmd.Title;
             Body = cmd.Body;
             Price = cmd.Price;
